@@ -1,3 +1,4 @@
+#where routes are defined
 Rails.application.routes.draw do
   get 'welcome/index'
 

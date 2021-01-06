@@ -1,0 +1,23 @@
+<%# post article view %>
+<h1>New article</h1>
+
+<%# creates the form %>
+<%# articles_path helper tells Rails to point the form to the URI Pattern associated with the articles prefix %>
+<%# the form will (by default) send a POST request to that route %>
+<%# this is associated with the create action %>
+<%# to see the POST URI, do bin/rake routes %>
+<%= form_for :article, url: articles_path do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
