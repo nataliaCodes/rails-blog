@@ -45,6 +45,13 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+   
+    redirect_to articles_path
+  end
+
   #whitelists our controller parameters to prevent wrongful mass assignment
   private
   def article_params
