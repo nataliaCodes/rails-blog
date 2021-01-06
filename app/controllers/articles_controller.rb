@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @article = Article.new
   end
 
   #When a form is submitted, the fields of the form are sent to Rails as parameters
@@ -23,9 +24,12 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
  
     #this saves the entry to the DB
-    @article.save
-    #this redirects the user to the show action
-    redirect_to @article
+    #the conditional is backup if the validation added in the model (app/models/article.rb) fails
+    if @article.save
+      redirect_to @article
+    else
+      render 'new'
+    end
   end
 
   #whitelists our controller parameters to prevent wrongful mass assignment
