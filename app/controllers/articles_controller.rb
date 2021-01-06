@@ -1,10 +1,16 @@
 #articles controller
 class ArticlesController < ApplicationController
 
+  #shows all articles
+  def index
+    @articles = Article.all
+  end
+
+  #shows newly created article
   def show
     @article = Article.find(params[:id])
   end
-  
+
   def new
   end
 
