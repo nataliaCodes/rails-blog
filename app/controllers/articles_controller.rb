@@ -15,10 +15,13 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   #When a form is submitted, the fields of the form are sent to Rails as parameters
   def create
-    #the params method is the object which represents the parameters (or fields) coming in from the form
-    #render plain: params[:article].inspect (this will display the content in a simple hash form)
+    #the params method = the content coming from the form
 
     #this creates a new DB entry
     @article = Article.new(article_params)
@@ -29,6 +32,16 @@ class ArticlesController < ApplicationController
       redirect_to @article
     else
       render 'new'
+    end
+  end
+
+  def update
+    @article = Article.find(params[:id])
+   
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render 'edit'
     end
   end
 
